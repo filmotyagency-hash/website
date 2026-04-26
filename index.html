@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Filmoty — Autonomous Media Arm</title>
+<title>Filmoty — Autonomous Media Arm for B2B Founders</title>
+<meta name="description" content="Filmoty builds autonomous media arms for high-ticket B2B founders. From strategic positioning to validated content systems — we handle execution while you close deals.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://filmoty.com">
+<meta property="og:title" content="Filmoty — Autonomous Media Arm for B2B Founders">
+<meta property="og:description" content="We architect video ecosystems that transform industry experts into high-ticket authorities. 4-phase validated system. Zero guesswork.">
+<meta property="og:image" content="https://filmoty.com/og-image.jpg">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Filmoty — Autonomous Media Arm">
+<meta name="twitter:description" content="We architect video ecosystems that transform industry experts into high-ticket authorities.">
+<meta name="twitter:image" content="https://filmoty.com/og-image.jpg">
+
+<!-- Favicon (SVG inline — no file needed) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236B0F0F'/><polygon points='10,8 24,16 10,24' fill='%23C41E3A'/></svg>">
+<meta name="theme-color" content="#07060C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -514,6 +532,7 @@ body {
 
 .hv-footer {
   display:flex; align-items:center; gap:0;
+  flex-wrap:nowrap;
   border:1px solid var(--border-md); border-top:1px solid var(--border);
   border-radius:0 0 8px 8px;
   background:rgba(7,6,12,.97);
@@ -543,8 +562,10 @@ body {
   .hero-inner { padding:72px 20px 48px; gap:36px }
   .hero-cta { flex-direction:column; width:100% }
   .hero-cta .btn { width:100%; justify-content:center }
-  .hero-stats { flex-wrap:wrap; gap:16px }
-  .hstat { min-width:calc(50% - 8px) }
+  .hero-stats { flex-wrap:nowrap; gap:0 }
+  .hstat { flex:1; min-width:0; padding:8px 8px }
+  .hstat-val { font-size:.85rem }
+  .hstat-lab { font-size:.38rem }
   .hstat-sep { display:none }
 }
 
@@ -1216,21 +1237,22 @@ body {
   .hero-badge-text { font-size:.55rem }
   .hero-cta { margin-bottom:28px; gap:10px }
   .hero-stats {
-    display:grid; grid-template-columns:1fr 1fr;
-    gap:12px; padding-top:20px;
+    display:flex; flex-direction:row;
+    gap:0; padding-top:20px;
+    flex-wrap:nowrap;
   }
-  .hstat { padding:12px 14px; background:var(--surface); border-radius:8px; border:1px solid var(--border) }
-  .hstat-sep { display:none }
-  .hstat-val { font-size:1.1rem }
-  .hstat-lab { font-size:.48rem }
+  .hstat { padding:10px 12px; flex:1; min-width:0 }
+  .hstat-sep { display:block; height:24px; width:1px }
+  .hstat-val { font-size:.95rem }
+  .hstat-lab { font-size:.42rem }
 
   /* Hero video — compact chrome on mobile */
   .hv-chrome { padding:6px 10px }
   .hv-url { font-size:.5rem; max-width:140px }
   .hv-live { font-size:.48rem }
-  .hvf-item { padding:8px 10px }
-  .hvf-val { font-size:.85rem }
-  .hvf-lab { font-size:.43rem }
+  .hvf-item { padding:8px 6px }
+  .hvf-val { font-size:.78rem }
+  .hvf-lab { font-size:.38rem; letter-spacing:.08em }
 
   /* Marquee */
   .marquee { padding:10px 0 }
@@ -2006,8 +2028,15 @@ body {
 .logo-chip-soon {
   font-family: var(--font-m); font-size: .48rem;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--w20); padding: 2px 6px;
-  border: 1px solid var(--border); border-radius: 3px;
+  color: rgba(196,30,58,.5); padding: 2px 6px;
+  border: 1px solid var(--border-red); border-radius: 3px;
+}
+.logo-chip-soon:contains("Live") { color: var(--red-bright) }
+/* Filmoty "Live" chip special */
+.logo-chip:last-child .logo-chip-soon {
+  color: var(--red-bright);
+  border-color: var(--border-red-hi);
+  background: rgba(107,15,15,.08);
 }
 
 /* Testimonial wall */
@@ -3024,14 +3053,18 @@ body::before {
             <div class="hv-url">filmoty.com/watch</div>
             <div class="hv-live"><span class="pulse"></span> Live</div>
           </div>
-          <div class="hv-frame">
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&color=white"
-              title="Filmoty — How We Build Media Arms"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="hv-frame" style="position:relative;background:#050508;display:flex;align-items:center;justify-content:center;min-height:240px">
+            <!-- Swap src khi có YouTube link thật -->
+            <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1" title="Filmoty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:40px">
+              <div style="width:52px;height:52px;border:1px solid var(--border-red);border-radius:3px;display:flex;align-items:center;justify-content:center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="var(--red-bright)" opacity=".6"/></svg>
+              </div>
+              <div>
+                <div style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--w20)">Video coming soon</div>
+                <div style="font-family:var(--font-m);font-size:.46rem;letter-spacing:.1em;color:rgba(248,246,240,.08);margin-top:4px">Subscribe → youtube.com/@filmoty</div>
+              </div>
+            </div>
           </div>
           <div class="hv-footer">
             <div class="hvf-item">
@@ -3092,85 +3125,89 @@ body::before {
 
   <!-- SOCIAL PROOF — standalone section -->
   <section class="social-proof">
-    <span class="sp-label">Trusted by founders who moved first</span>
+    <span class="sp-label">Be among the first founders in the system</span>
 
     <div class="logo-wall stagger-children reveal">
-      <div class="logo-chip">
-        <div class="logo-chip-icon" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">SF</div>
-        <span class="logo-chip-name">ScaleForce</span>
-      </div>
-      <div class="logo-chip">
-        <div class="logo-chip-icon" style="background:linear-gradient(135deg,#0f2027,#203a43)">NX</div>
-        <span class="logo-chip-name">Nexus Advisory</span>
-      </div>
-      <div class="logo-chip">
-        <div class="logo-chip-icon" style="background:linear-gradient(135deg,#1a0a00,#3d1500)">OV</div>
-        <span class="logo-chip-name">Overhault</span>
-      </div>
-      <div class="logo-chip">
-        <div class="logo-chip-icon" style="background:linear-gradient(135deg,#0d1b2a,#1b2838)">VP</div>
-        <span class="logo-chip-name">VaultPoint</span>
+      <div class="logo-chip logo-chip--dim">
+        <div class="logo-chip-icon" style="background:rgba(107,15,15,.1);border:1px solid var(--border-red)">01</div>
+        <span class="logo-chip-name">Your brand</span>
+        <span class="logo-chip-soon">Open</span>
       </div>
       <div class="logo-chip logo-chip--dim">
-        <div class="logo-chip-icon" style="background:rgba(255,255,255,.04);border:1px solid var(--border)">—</div>
+        <div class="logo-chip-icon" style="background:rgba(107,15,15,.1);border:1px solid var(--border-red)">02</div>
         <span class="logo-chip-name">Your brand</span>
-        <span class="logo-chip-soon">Soon</span>
+        <span class="logo-chip-soon">Open</span>
+      </div>
+      <div class="logo-chip logo-chip--dim">
+        <div class="logo-chip-icon" style="background:rgba(107,15,15,.1);border:1px solid var(--border-red)">03</div>
+        <span class="logo-chip-name">Your brand</span>
+        <span class="logo-chip-soon">Open</span>
+      </div>
+      <div class="logo-chip logo-chip--dim">
+        <div class="logo-chip-icon" style="background:rgba(107,15,15,.1);border:1px solid var(--border-red)">04</div>
+        <span class="logo-chip-name">Your brand</span>
+        <span class="logo-chip-soon">Open</span>
+      </div>
+      <div class="logo-chip logo-chip--dim">
+        <div class="logo-chip-icon" style="background:rgba(248,246,240,.03);border:1px solid var(--border)">—</div>
+        <span class="logo-chip-name">Filmoty</span>
+        <span class="logo-chip-soon">Live</span>
       </div>
     </div>
 
-    <div class="s-head reveal" style="margin-bottom:36px">
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="s">
+    <div class="s-head reveal">
       <span class="eyebrow">What founders say</span>
       <h2 class="s-title">Results, not promises.</h2>
     </div>
-
     <div class="twall-wrap">
     <div class="twall reveal">
-      <div class="tw-card tw-card--featured mag-hover">
-        <div>
-          <div class="tw-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="tw-quote">Before Filmoty we had a content strategy that looked great on a slide deck and did absolutely nothing in the market. They came in, <strong>killed half our assumptions in week one</strong>, and built a system that actually generates inbound. First qualified DM came in day 11 of the pilot.</p>
+
+      <div class="tw-card tw-card--featured">
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;align-items:flex-start">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pulse"></span>
+            <span style="font-family:var(--font-m);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--w20)">Testimonial incoming</span>
+          </div>
+          <p style="font-family:var(--font-m);font-size:.62rem;color:rgba(248,246,240,.12);letter-spacing:.04em;line-height:1.8;font-style:normal">This spot is reserved for a founder who's been through the system and has results to show for it. Could be you.</p>
         </div>
-        <div class="tw-author">
-          <div class="tw-av">JR</div>
+        <div class="tw-author" style="opacity:.3">
+          <div class="tw-av">—</div>
           <div>
-            <span class="tw-name">James R.</span>
-            <span class="tw-role">CEO · B2B SaaS</span>
-            <div class="tw-result">+340% inbound · Phase 3</div>
+            <span class="tw-name">Founder Name</span>
+            <span class="tw-role">Role · Industry</span>
+            <div class="tw-result">Results · Phase</div>
           </div>
         </div>
       </div>
 
       <div class="tw-card">
-        <div>
-          <div class="tw-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="tw-quote">The Blueprint alone was worth 10x the $500. We discovered our offer was positioned for the wrong buyer entirely. <strong>That single insight changed our entire GTM.</strong></p>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center">
+          <span style="font-family:var(--font-m);font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:var(--w20)">Coming soon</span>
+          <div style="width:32px;height:1px;background:var(--border-red);opacity:.4"></div>
         </div>
-        <div class="tw-author">
-          <div class="tw-av">ML</div>
-          <div>
-            <span class="tw-name">Marcus L.</span>
-            <span class="tw-role">Founder · Consulting Firm</span>
-            <div class="tw-result">Repositioned ICP · Phase 2</div>
-          </div>
+        <div class="tw-author" style="opacity:.2">
+          <div class="tw-av">—</div>
+          <div><span class="tw-name">—</span><span class="tw-role">—</span></div>
         </div>
       </div>
 
       <div class="tw-card">
-        <div>
-          <div class="tw-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="tw-quote">I've worked with 3 video agencies. Filmoty is the only one that <strong>asked about revenue before asking about aesthetic.</strong> Night and day difference in how they think.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center">
+          <span style="font-family:var(--font-m);font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:var(--w20)">Coming soon</span>
+          <div style="width:32px;height:1px;background:var(--border-red);opacity:.4"></div>
         </div>
-        <div class="tw-author">
-          <div class="tw-av">AK</div>
-          <div>
-            <span class="tw-name">Alena K.</span>
-            <span class="tw-role">MD · Professional Services</span>
-            <div class="tw-result">6.2% CVR · Phase 2</div>
-          </div>
+        <div class="tw-author" style="opacity:.2">
+          <div class="tw-av">—</div>
+          <div><span class="tw-name">—</span><span class="tw-role">—</span></div>
         </div>
       </div>
-    </div><!-- /twall -->
-    </div><!-- /twall-wrap -->
+
+    </div>
+    </div>
   </section>
 
   <!-- CTA BANNER -->
@@ -3586,70 +3623,23 @@ body::before {
       </div>
     </div>
 
-    <!-- VANTAGE CONSULTING -->
-    <div class="wc-card reveal" id="wcVantage">
-      <div class="wc-card-head" onclick="toggleCase('wcVantage')">
-        <div class="wc-head-left">
-          <div class="wc-industry-tag">Consulting · Operations</div>
-          <h2 class="wc-title">Vantage Consulting</h2>
-          <p class="wc-subtitle">From Invisible Expert to LinkedIn Authority</p>
-        </div>
-        <div class="wc-head-stats">
-          <div class="wc-hstat"><span class="wc-hstat-val">18K</span><span class="wc-hstat-lab">Followers</span></div>
-          <div class="wc-hstat"><span class="wc-hstat-val">$45K</span><span class="wc-hstat-lab">Pipeline</span></div>
-          <div class="wc-hstat"><span class="wc-hstat-val">60d</span><span class="wc-hstat-lab">Timeline</span></div>
-        </div>
-        <div class="wc-expand-btn">
-          <span class="wc-exp-label">Details</span>
-          <span class="wc-exp-icon">↓</span>
-        </div>
-      </div>
-      <div class="wc-card-body">
-        <div class="wc-body-inner">
-          <p class="wc-desc">47 enterprise clients, 20 years of operational excellence — zero digital presence. Junior competitors were winning deals purely on visibility. We built a Proof of Work content system that changed that in 60 days.</p>
-          <div class="wc-tag-row">
-            <span class="wc-tag-pill">LinkedIn Authority</span>
-            <span class="wc-tag-pill">Documentary Video</span>
-            <span class="wc-tag-pill">Case Study Series</span>
-            <span class="wc-tag-pill">Lead Magnet</span>
-          </div>
-          <div class="wc-actions">
-            <button class="btn btn-secondary" onclick="openCase('consulting');event.stopPropagation()">Full Case Study →</button>
-          </div>
+    <!-- PLACEHOLDER SLOTS -->
+    <div class="wc-card wc-card--pending reveal">
+      <div class="wc-pending-inner">
+        <span class="wc-pending-dot"></span>
+        <div>
+          <span class="wc-pending-label">Case study incoming</span>
+          <span class="wc-pending-sub">Client project · In progress</span>
         </div>
       </div>
     </div>
 
-    <!-- LEXAR LEGAL -->
-    <div class="wc-card reveal" id="wcLexar">
-      <div class="wc-card-head" onclick="toggleCase('wcLexar')">
-        <div class="wc-head-left">
-          <div class="wc-industry-tag">Legal Tech · B2B</div>
-          <h2 class="wc-title">Lexar Legal</h2>
-          <p class="wc-subtitle">Escaping Referral Dependency with Inbound</p>
-        </div>
-        <div class="wc-head-stats">
-          <div class="wc-hstat"><span class="wc-hstat-val">12</span><span class="wc-hstat-lab">Enterprise Leads</span></div>
-          <div class="wc-hstat"><span class="wc-hstat-val">$180K</span><span class="wc-hstat-lab">Pipeline Value</span></div>
-          <div class="wc-hstat"><span class="wc-hstat-val">45d</span><span class="wc-hstat-lab">First Result</span></div>
-        </div>
-        <div class="wc-expand-btn">
-          <span class="wc-exp-label">Details</span>
-          <span class="wc-exp-icon">↓</span>
-        </div>
-      </div>
-      <div class="wc-card-body">
-        <div class="wc-body-inner">
-          <p class="wc-desc">Entirely referral-dependent revenue — unpredictable, capped. When two major referral partners reduced volume, impact was immediate. We built an education-first funnel targeting in-house legal teams that generated 12 enterprise inquiries in 45 days.</p>
-          <div class="wc-tag-row">
-            <span class="wc-tag-pill">Education Funnel</span>
-            <span class="wc-tag-pill">Gated Resource</span>
-            <span class="wc-tag-pill">Email Drip</span>
-            <span class="wc-tag-pill">LinkedIn Outreach</span>
-          </div>
-          <div class="wc-actions">
-            <button class="btn btn-secondary" onclick="openCase('legal');event.stopPropagation()">Full Case Study →</button>
-          </div>
+    <div class="wc-card wc-card--pending reveal">
+      <div class="wc-pending-inner">
+        <span class="wc-pending-dot"></span>
+        <div>
+          <span class="wc-pending-label">Case study incoming</span>
+          <span class="wc-pending-sub">Client project · In progress</span>
         </div>
       </div>
     </div>
@@ -3920,12 +3910,12 @@ body::before {
       <div class="hub-group" style="background:var(--bg)">
         <div class="hub-group-label">Documentary</div>
         <div class="hub-channel" onclick="window.open('https://instagram.com/m.pfuc','_blank')"><div class="hub-icon hub-icon--ig">📸</div><div><span class="hub-ch-name">@m.pfuc</span><span class="hub-ch-desc">Behind the process — raw documentary content</span><span class="hub-ch-type">Instagram · Documentary</span></div></div>
-        <div class="hub-channel" onclick="window.open('https://youtube.com','_blank')"><div class="hub-icon hub-icon--yt">▶</div><div><span class="hub-ch-name">Henry Marques</span><span class="hub-ch-desc">Long-form documentary on building systems</span><span class="hub-ch-type">YouTube · Documentary</span></div></div>
+        <div class="hub-channel" onclick="window.open('https://youtube.com/@filmoty','_blank')"><div class="hub-icon hub-icon--yt">▶</div><div><span class="hub-ch-name">Henry Marques</span><span class="hub-ch-desc">Long-form documentary on building systems</span><span class="hub-ch-type">YouTube · Documentary</span></div></div>
       </div>
       <div class="hub-group" style="background:var(--bg)">
         <div class="hub-group-label">Business</div>
         <div class="hub-channel" onclick="window.open('https://linkedin.com/in/henrymarques190','_blank')"><div class="hub-icon hub-icon--li" style="font-size:.8rem;font-weight:700">in</div><div><span class="hub-ch-name">Henry Marques</span><span class="hub-ch-desc">B2B strategy, media systems, and operator insights</span><span class="hub-ch-type">LinkedIn · Business</span></div></div>
-        <div class="hub-channel" onclick="window.open('https://youtube.com','_blank')"><div class="hub-icon hub-icon--yt">▶</div><div><span class="hub-ch-name">Henry Marques</span><span class="hub-ch-desc">Business strategy, case studies, the Filmoty system</span><span class="hub-ch-type">YouTube · Business</span></div></div>
+        <div class="hub-channel" onclick="window.open('https://youtube.com/@filmoty','_blank')"><div class="hub-icon hub-icon--yt">▶</div><div><span class="hub-ch-name">Henry Marques</span><span class="hub-ch-desc">Business strategy, case studies, the Filmoty system</span><span class="hub-ch-type">YouTube · Business</span></div></div>
       </div>
     </div>
     <div style="margin-top:80px">
@@ -4022,7 +4012,7 @@ body::before {
         <!-- Calendly inline widget -->
         <div class="cal-embed-wrap">
           <iframe
-            src="https://calendly.com/henrymarques190/30min?hide_gdpr_banner=1&primary_color=c8201e&background_color=0e0e14&text_color=ffffff"
+            src="https://calendly.com/henrymarques190/30min?hide_gdpr_banner=1&primary_color=9B1C1C&background_color=07060C&text_color=F8F6F0"
             frameborder="0"
             scrolling="yes"
             title="Book a Strategy Call with Filmoty"
@@ -4162,7 +4152,7 @@ body::before {
       <div class="footer-social">
         <a href="https://linkedin.com/in/henrymarques190" target="_blank" class="footer-soc-link">in</a>
         <a href="https://instagram.com/m.pfuc" target="_blank" class="footer-soc-link">ig</a>
-        <a href="https://youtube.com" target="_blank" class="footer-soc-link">yt</a>
+        <a href="https://youtube.com/@filmoty" target="_blank" class="footer-soc-link">yt</a>
       </div>
     </div>
     <nav class="footer-nav">
